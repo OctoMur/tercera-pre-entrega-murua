@@ -1,7 +1,0 @@
-Lista de objetivos para la 3er pre entrega
-
-1-Aplicar, DAO, factory, DTO, repository
-2-Aplicar sistema de roles para admins y usuarios
-3-Crear un modelo de tickets
-4-Implementar un nueva ruta para el cart (/:cid/purchase)
-5-Hacer que la aplicacion genere los tickets segun los datos de la compra
