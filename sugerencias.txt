@@ -1,0 +1,12 @@
+
+Sugerencias (no son obligatorias aplicarlas):
+
+1) Si intento hacer el login con un usuario que aún no registre, mostras el mensaje de error de "usuario no encontrado". Está muy bien, pero quizá podrías crear una vista nueva que le informe al usuario con un mensaje que no está registrado, o utilizar una librería como Swal.fire (la que usamos con el chat), de manera que aparezca un aviso que le diga al usuario que no se encuentra registrado.
+
+2) Cuando un usuario se registra correctamente, quizá lo ideal sería que le informes mediante una vista nueva o un mensaje a través de Swal.fire que el registro fue exitoso y colocar un botón que al presionarlo lo pueda redirigir a la vista del login nuevamente.
+
+3) Cuando coloco erróneamente a propósito el nombre de usuario o la contraseña en el login sería ideal que mediante un mensaje con Swal.fire u otra librería informes que la contraseña o el nombre de usuario son incorrectos. Si bien aparecen los mensajes en formato JSON, te podría quedar mejor con avisos o vistas nuevas.
+
+4) Si intento registrar un usuario con un mail ya existente en la base de datos, podrías lanzar un aviso con Swal.fire indicando que el mail ingresado ya está registrado.
+
+Todas estas sugerencias reemplazarían a los mensajes de error que se muestran en formato JSON en pantalla, para que así, tu proyecto quede implementado al 100% en lo relativo a vistas y de esta manera puedas seguir practicando con Handlebars. Recorda que son solo sugerencias para mejorar el manejo de errores en el Front - End, que no es obligatorio aplicar en el curso.
