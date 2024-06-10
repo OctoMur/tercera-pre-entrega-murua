@@ -19,6 +19,9 @@ class ViewsController {
                 return rest;
             });
     
+            const cid = req.user.cart._id;
+            console.log(newArray)
+            //console.log(cid);
             res.render("products", {
                 products: newArray,
                 hasPrevPage: products.hasPrevPage,
@@ -26,7 +29,8 @@ class ViewsController {
                 prevPage: products.prevPage,
                 nextPage: products.nextPage,
                 currentPage: products.page,
-                totalPages: products.totalPages
+                totalPages: products.totalPages,
+                cid
             });
     
         } catch (error) {

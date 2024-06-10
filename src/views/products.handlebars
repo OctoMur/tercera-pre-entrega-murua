@@ -1,3 +1,9 @@
+<div class="d-flex justify-content-center align-items-center">
+    <h1 class="text-center">Productos</h1>
+    <a href="/carts/{{cid}}" class="ms-5">
+    <i class="bi bi-cart cart-icon"></i>
+    </a>
+
 <h1> Productos </h1>
 {{#each products}}
 <div>
@@ -5,7 +11,9 @@
     <p>{{description}}</p>
     <p>Price: ${{price}}</p>
     <p>Category: {{category}} </p>
-    <button> Agregar al Carrito </button>
+    <form action="/api/carts/{{../cid}}/product/{{pid}}" method="POST">
+        <button class="btnMios" type="submit">Agregar al Carrito</button>
+    </form>
 </div>
 {{/each}}
 
@@ -18,3 +26,4 @@
 {{/if}} 
 
 <p>Pagina {{currentPage}} de {{totalPages}} </p>
+

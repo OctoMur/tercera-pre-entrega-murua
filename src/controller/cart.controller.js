@@ -36,10 +36,9 @@ class CartController {
     }
 
     async addProductToCart(req, res){
-        const {cid} = req.params;
-        const {pid} = req.params;
+        const cid = req.user.cart._id;
+        const pid = req.products.product._id;
         const quantity = req.body.quantity || 1;
-
         try {
             const cart = await CartModel.findOne({ _id: cid });
             const product = await ProductModel.findOne({ _id: pid });
@@ -51,7 +50,7 @@ class CartController {
             if (!product) {
                 return response(res, 404, { message: "Producto no encontrado" });
             }
-
+            console.log(cid, pid);
             const cartUpdate = await cartService.addProductToCart(cid, pid, quantity);
             response(res, 200, cartUpdate.products)
 

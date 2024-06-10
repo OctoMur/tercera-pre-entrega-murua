@@ -33,9 +33,13 @@ app.use(session({
 }));
 
 //Implementando passport
-initializePassport();
 app.use(passport.initialize());
+initializePassport();
 app.use(passport.session());
+
+//AuthMiddleware
+const authMiddleware = require("./middleware/authmiddleware.js");
+app.use(authMiddleware);
 
 //Routes
 app.use("/api/products", productsRouter);
