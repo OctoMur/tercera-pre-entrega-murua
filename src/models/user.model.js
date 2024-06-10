@@ -28,6 +28,11 @@ const userSchema = mongoose.Schema({
         require: true
     },
 
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cart'
+    },
+
     admin: {
         type: Boolean,
         require: true,

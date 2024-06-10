@@ -30,7 +30,7 @@ class ProductService{
         return true;
     }
 
-    async getProducts({limit = 3, page = 1, sort, query} = {}){
+    async getProducts({limit, page , sort, query} = {}){
         try {
 
             const skip = (page - 1) * limit;

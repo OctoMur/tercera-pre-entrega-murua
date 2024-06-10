@@ -6,8 +6,8 @@ const expressHbs = require("express-handlebars");
 require("./database");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const passport = require("passport"); //<-- importacion de passport
-const initializePassport = require("./config/passport.config"); //<-- importacion del modulo incializador de passport
+const passport = require("passport"); 
+const initializePassport = require("./config/passport.config");
 
 
 //Routers
@@ -15,7 +15,6 @@ const productsRouter = require("./routes/products.router");
 const cartRouter = require("./routes/carts.router");
 const viewsRouter = require("./routes/views.router");
 const userRouter = require("./routes/user.router");
-const sessionRouter = require("./routes/sessions.router");
 
 //Middlewares
 app.use(express.json());
@@ -41,13 +40,17 @@ app.use(passport.session());
 //Routes
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartRouter);
-app.use("/",viewsRouter)
 app.use("/api/users", userRouter);
-app.use("/api/sessions", sessionRouter);
+app.use("/",viewsRouter)
 
 //Handlebars
 app.engine("handlebars", expressHbs.engine());
 app.set("view engine", "handlebars");
 app.set("views", "./src/views");
 
-app.listen(PORT);
+const httpServer = app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+
+const SocketManager = require("./sockets/socketManager");
+new SocketManager(httpServer);

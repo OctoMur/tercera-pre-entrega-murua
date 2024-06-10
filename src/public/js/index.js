@@ -1,6 +1,11 @@
 const socket = io();
 
+socket.on("products", (products) => {
+    renderProductos(products);
+})
+
 const renderProductos = (products) => {
+    console.log("lista de productos (index.js)", products)
     const contanerProducts = document.getElementById("contanerProducts");
     contanerProducts.innerHTML = "";
 
@@ -10,7 +15,7 @@ const renderProductos = (products) => {
         card.classList.add("card");
 
         card.innerHTML = `
-                <p>Id: ${item.id} </p>
+                <p>Id: ${item._id} </p>
                 <p>Titulo: ${item.title} </p>
                 <p>Precio: ${item.price} </p>
                 <button> Eliminar Producto </button>

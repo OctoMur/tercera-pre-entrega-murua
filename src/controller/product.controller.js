@@ -70,8 +70,6 @@ class ProductController{
         const productUpdated = req.body;
     
         try {
-            console.log(pid);
-    
             const updated = await productService.updateProduct(pid, productUpdated);
         
             if(updated){
