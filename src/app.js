@@ -8,7 +8,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport"); 
 const initializePassport = require("./config/passport.config");
-
+const path = require('path');
 
 //Routers
 const productsRouter = require("./routes/products.router");
@@ -20,6 +20,7 @@ const userRouter = require("./routes/user.router");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./src/public"));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(session({
     secret: "secretSecret",
