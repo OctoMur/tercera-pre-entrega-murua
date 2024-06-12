@@ -58,7 +58,6 @@ class UserController{
             const token = jwt.sign({ user: userFound }, "m1$up3rKlaB$ekReT4");
 
             res.cookie("CookieComponent", token, {httpOnly: true});
-            console.log(userFound, isValid);//<-Hasta aca funciona
 
             res.redirect("/api/users/profile");
         } catch (error) {

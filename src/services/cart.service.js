@@ -30,31 +30,22 @@ class CartService{
         }
     }
 
-    async addProductToCart(cid, productId, quantity){
+    async addProductToCart(cartId, productId, quantity){
         try {
-            const product = await productService.getProductById(productId);
-            if(!product){
-                console.log("Producto no existente.");
-                return;
-            }
+            const cart = await this.getCartById(cartId);
+            const existProduct = cart.products.find(item => item.product._id.toString() === productId);
 
-            const cart = await this.getCartById(cid);
-
-            const existProduct = cart.products.find(item => item.product.id == productId);
-
-            if(existProduct){
+            if (existProduct) {
                 existProduct.quantity += quantity;
-            }else{
-                
-                cart.products.push({product: productId, quantity});
+            } else {
+                cart.products.push({ product: productId, quantity });
             }
 
-            //marca la ultima propiedad modificada que se genero antes de guardar.
+            //Vamos a marcar la propiedad "products" como modificada antes de guardar: 
             cart.markModified("products");
 
             await cart.save();
             return cart;
-
         } catch (error) {
             console.error("Error al agregar el product al carrito.", error);
         }

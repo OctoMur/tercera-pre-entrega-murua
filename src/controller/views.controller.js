@@ -8,20 +8,19 @@ class ViewsController {
 
     async renderProducts(req, res) {
         try {
-            const { page = 1, limit = 3 } = req.query;
+            const { page, limit } = req.query;
             const products = await productService.getProducts({
                 page: parseInt(page),
                 limit: parseInt(limit)
             });
     
             const newArray = products.docs.map(product => {
-                const { _id, ...rest } = product.toObject();
+                const {...rest } = product.toObject();
                 return rest;
             });
     
             const cid = req.user.cart._id;
-            console.log(newArray)
-            //console.log(cid);
+            //console.log(newArray);
             res.render("products", {
                 products: newArray,
                 hasPrevPage: products.hasPrevPage,
