@@ -2,6 +2,7 @@ const CartService = require("../services/cart.service");
 const cartService = new CartService();
 const ProductService = require("../services/product.service");
 const productService = new ProductService();
+const UserModel = require("../models/user.model.js");
 
 const TicketModel = require("../models/ticket.model");
 
@@ -24,7 +25,7 @@ class CartController {
         const {cid} = req.params;
 
         try {
-            const cart = await cartService.getCartById(cid);
+            const cart = await cartService.getCart(cid);
 
             if (!cart) {
                 response(res, 404, { message: "Carrito no encotrado" });
@@ -108,6 +109,7 @@ class CartController {
 
     async finalizePurchase(req, res) {
         const cartId = req.params.cid;
+        console.log(cartId)
         try {
             const cart = await cartService.getCart(cartId);
             const products = cart.products;
@@ -116,7 +118,7 @@ class CartController {
 
             for (const item of products) {
                 const productId = item.product;
-                const product = await productService.getCartById(productId);
+                const product = await productService.getProductById(productId);
                 if (product.stock >= item.quantity) {
                     product.stock -= item.quantity;
                     await product.save();

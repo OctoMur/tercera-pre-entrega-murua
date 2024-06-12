@@ -4,6 +4,11 @@ const router = express.Router();
 const CartController = require("../controller/cart.controller");
 const cartController = new CartController();
 
+const authMiddleware = require("../middleware/authmiddleware.js");
+
+router.use(authMiddleware);
+
+
 router.post("/", cartController.postCart );
 
 router.get("/:cid", cartController.getCart);

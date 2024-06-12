@@ -1,0 +1,7 @@
+-Reestructuracion de los routers ✅
+-Servicios aplicados ✅
+-DTO aplicado ✅
+-Creacion y aplicacion de un middleware limitador de acceso ✅
+-Creacion y uso de un modelo de Ticket ✅
+-Creacion y desarrollo de un endpoint que concrete la compra ✅
+    -Sistema de tickets de compra aplicado ✅

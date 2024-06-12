@@ -16,7 +16,7 @@ class CartService{
         }
     }
 
-    async getCartById(cid){
+    async getCart(cid){
         try {
             const cart = await CartModel.findById(cid);
 
@@ -32,7 +32,7 @@ class CartService{
 
     async addProductToCart(cartId, productId, quantity){
         try {
-            const cart = await this.getCartById(cartId);
+            const cart = await this.getCart(cartId);
             const existProduct = cart.products.find(item => item.product._id.toString() === productId);
 
             if (existProduct) {

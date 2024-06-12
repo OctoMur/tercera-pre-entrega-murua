@@ -44,7 +44,7 @@ class ViewsController {
     async renderCart(req, res) {
         const cartId = req.params.cid;
         try {
-            const cart = await cartService.getCartById(cartId);
+            const cart = await cartService.getCart(cartId);
 
             if (!cart) {
                 return res.status(404).json({ error: "Carrito no encontrado" });
